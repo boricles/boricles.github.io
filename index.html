@@ -1,565 +1,673 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mentorship in Computer Science & Artificial Intelligence</title>
+  <title>Tech & AI Mentorship — Career Guidance for CS Graduates & Junior Professionals</title>
   <meta name="description" content="Mentorship for computer science graduates and junior professionals: career guidance, transition to industry, and support in your first job." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              200: '#bfdbfe',
+              300: '#93c5fd',
+              400: '#60a5fa',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+              800: '#1e3a5f',
+              900: '#0f172a',
+              950: '#0a0f1a',
+            },
+            accent: {
+              400: '#34d399',
+              500: '#10b981',
+              600: '#059669',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
-    :root {
-      --bg: #0b1020;
-      --panel: rgba(255, 255, 255, 0.06);
-      --panel-strong: rgba(255, 255, 255, 0.1);
-      --text: #eef2ff;
-      --muted: #c7d2fe;
-      --accent: #8b5cf6;
-      --accent-2: #22c55e;
-      --border: rgba(255, 255, 255, 0.14);
-      --shadow: 0 18px 60px rgba(0, 0, 0, 0.35);
-      --max: 1120px;
-      --radius: 22px;
+    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
-
-    * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(139, 92, 246, 0.26), transparent 30%),
-        radial-gradient(circle at top right, rgba(34, 197, 94, 0.18), transparent 28%),
-        linear-gradient(180deg, #0b1020 0%, #0f172a 55%, #111827 100%);
-      color: var(--text);
-      line-height: 1.6;
+    .glass {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
     }
-
-    a { color: inherit; text-decoration: none; }
-    .container {
-      width: min(var(--max), calc(100% - 32px));
-      margin: 0 auto;
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
     }
-
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      backdrop-filter: blur(16px);
-      background: rgba(11, 16, 32, 0.72);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    .card-hover:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
+      border-color: rgba(59, 130, 246, 0.3);
     }
-
-    .nav-inner {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      padding: 16px 0;
+    .pricing-popular {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.08));
+      border-color: rgba(59, 130, 246, 0.4);
     }
-
-    .brand {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-weight: 700;
-      letter-spacing: 0.2px;
+    .btn-primary {
+      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
     }
-
-    .brand-mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 14px;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(135deg, var(--accent), #06b6d4);
-      box-shadow: 0 8px 24px rgba(139, 92, 246, 0.35);
-      font-weight: 800;
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.45);
     }
-
-    .nav-links {
-      display: flex;
-      gap: 22px;
-      flex-wrap: wrap;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .btn-secondary {
+      transition: all 0.3s ease;
     }
-
-    .nav-links a:hover { color: white; }
-
-    .hero {
-      padding: 72px 0 28px;
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
     }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 28px;
-      align-items: stretch;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
     }
-
-    .hero-copy, .card, .service, .step, .testimonial, .contact-box {
-      background: var(--panel);
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-      border-radius: var(--radius);
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    .hero-copy {
-      padding: 34px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      background: rgba(139, 92, 246, 0.14);
-      color: #ddd6fe;
-      font-size: 0.92rem;
-      margin-bottom: 18px;
-    }
-
-    h1 {
-      margin: 0;
-      font-size: clamp(2.3rem, 5vw, 4.7rem);
-      line-height: 1.02;
-      letter-spacing: -0.04em;
-    }
-
-    .lead {
-      margin: 18px 0 26px;
-      font-size: 1.08rem;
-      color: #dbe4ff;
-      max-width: 62ch;
-    }
-
-    .cta-row {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-      margin-top: 28px;
-    }
-
-    .button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 14px 18px;
-      border-radius: 14px;
-      border: 1px solid transparent;
-      font-weight: 700;
-      transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
-    }
-
-    .button:hover { transform: translateY(-1px); }
-    .button.primary {
-      background: linear-gradient(135deg, var(--accent), #2563eb);
-      color: white;
-    }
-    .button.secondary {
-      background: rgba(255, 255, 255, 0.05);
-      border-color: rgba(255, 255, 255, 0.12);
-      color: white;
-    }
-
-    .hero-side {
-      display: grid;
-      gap: 18px;
-    }
-
-    .card {
-      padding: 22px;
-    }
-
-    .card h3, .section-title h2, .contact-box h2 {
-      margin: 0 0 10px;
-      letter-spacing: -0.03em;
-    }
-
-    .card p, .section-intro, .service p, .step p, .testimonial p, .contact-box p, .footer {
-      color: var(--muted);
-    }
-
-    .metrics {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .metric {
-      padding: 16px;
-      border-radius: 18px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-
-    section {
-      padding: 28px 0;
-    }
-
-    .section-title {
-      margin-bottom: 18px;
-    }
-
-    .section-intro {
-      max-width: 72ch;
-      margin: 0;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-    }
-
-    .service, .step, .testimonial {
-      padding: 22px;
-    }
-
-    .icon {
-      width: 46px;
-      height: 46px;
-      border-radius: 16px;
-      display: grid;
-      place-items: center;
-      background: rgba(139, 92, 246, 0.16);
-      margin-bottom: 14px;
-      font-size: 1.2rem;
-    }
-
-    .service h3, .step h3 {
-      margin: 0 0 10px;
-      font-size: 1.16rem;
-    }
-
-    .list {
-      padding-left: 18px;
-      margin: 14px 0 0;
-      color: var(--muted);
-    }
-
-    .list li { margin: 8px 0; }
-
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 34px;
-      height: 34px;
+    .hero-glow {
+      position: absolute;
+      width: 600px;
+      height: 600px;
       border-radius: 50%;
-      background: rgba(34, 197, 94, 0.16);
-      color: #bbf7d0;
-      font-weight: 800;
-      margin-bottom: 14px;
-    }
-
-    .testimonials {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-    }
-
-    .quote {
-      font-size: 1.02rem;
-      color: #eff6ff;
-      margin: 0 0 12px;
-    }
-
-    .who {
-      font-size: 0.92rem;
-      color: #cbd5e1;
-    }
-
-    .contact-box {
-      padding: 30px;
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 20px;
-      align-items: start;
-    }
-
-    .contact-panel {
-      padding: 22px;
-      background: rgba(255, 255, 255, 0.05);
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-    }
-
-    .contact-panel p { margin: 8px 0; }
-
-    .contact-links {
-      display: grid;
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      width: fit-content;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: white;
-    }
-
-    .footer {
-      padding: 24px 0 40px;
-      text-align: center;
-      font-size: 0.95rem;
-    }
-
-    .small {
-      font-size: 0.95rem;
-      color: var(--muted);
-    }
-
-    @media (max-width: 980px) {
-      .hero-grid, .contact-box, .grid-3, .steps, .testimonials {
-        grid-template-columns: 1fr;
-      }
-      .nav-inner {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      .hero {
-        padding-top: 44px;
-      }
+      filter: blur(120px);
+      opacity: 0.15;
+      pointer-events: none;
     }
   </style>
 </head>
-<body>
-  <header class="nav">
-    <div class="container nav-inner">
-      <div class="brand">
-        <div class="brand-mark">AI</div>
-        <div>
-          <div>Tech & AI Mentorship</div>
-          <div class="small">Career guidance & professional growth</div>
-        </div>
+<body class="bg-brand-950 text-gray-100 antialiased">
+
+  <!-- Navigation -->
+  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5" style="background: rgba(10, 15, 26, 0.8); backdrop-filter: blur(20px);">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex items-center justify-between h-18 py-4">
+        <a href="#" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-extrabold text-sm text-white shadow-lg shadow-brand-500/25">
+            AI
+          </div>
+          <div>
+            <div class="font-bold text-white tracking-tight">Tech & AI Mentorship</div>
+            <div class="text-xs text-gray-400">Career guidance & professional growth</div>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-8">
+          <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
+          <a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How It Works</a>
+          <a href="#pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a>
+          <a href="#about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a>
+          <a href="#testimonials" class="text-sm text-gray-400 hover:text-white transition-colors">Testimonials</a>
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary text-sm font-semibold text-white px-5 py-2.5 rounded-xl">
+            Book a Session
+          </a>
+        </nav>
+
+        <!-- Mobile menu button -->
+        <button id="mobile-toggle" class="md:hidden text-gray-400 hover:text-white p-2" aria-label="Toggle menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
       </div>
-      <nav class="nav-links">
-        <a href="#services">Services</a>
-        <a href="#how-it-works">How it works</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+
+      <!-- Mobile menu -->
+      <nav id="mobile-menu" class="hidden md:hidden pb-6 border-t border-white/5 pt-4">
+        <div class="flex flex-col gap-4">
+          <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
+          <a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How It Works</a>
+          <a href="#pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a>
+          <a href="#about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a>
+          <a href="#testimonials" class="text-sm text-gray-400 hover:text-white transition-colors">Testimonials</a>
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary text-sm font-semibold text-white px-5 py-2.5 rounded-xl text-center mt-2">
+            Book a Session
+          </a>
+        </div>
       </nav>
     </div>
   </header>
 
   <main>
-    <section class="hero">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <div class="eyebrow">For graduates and junior professionals in computer science</div>
-          <h1>Your bridge between university and the real world of tech and AI.</h1>
-          <p class="lead">
-            I help computer science graduates and junior professionals make better career decisions, break into the industry with clarity, and navigate real challenges in their first job.
-          </p>
-          <div class="cta-row">
-            <a class="button primary" href="#contact">Get in touch</a>
-            <a class="button secondary" href="#services">View services</a>
-          </div>
-        </div>
 
-        <aside class="hero-side">
-          <div class="card">
-            <h3>What you can work on</h3>
-            <p>
-              From career direction to practical support for interviews, projects, and adapting to real-world teams and expectations.
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
+      <div class="hero-glow bg-brand-500 top-0 left-1/4"></div>
+      <div class="hero-glow bg-accent-500 top-1/4 right-0"></div>
+
+      <div class="max-w-6xl mx-auto px-6 py-20 md:py-32">
+        <div class="grid lg:grid-cols-2 gap-16 items-center">
+          <div class="fade-in">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-8">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              For CS graduates & junior professionals
+            </div>
+
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] mb-6">
+              Your bridge between <span class="gradient-text">university and the real world</span> of tech & AI.
+            </h1>
+
+            <p class="text-lg text-gray-400 leading-relaxed max-w-xl mb-10">
+              I help computer science graduates and junior professionals make better career decisions, break into the industry with clarity, and navigate real challenges in their first job.
             </p>
-            <div class="metrics">
-              <div class="metric">
-                <strong>Academia + Industry</strong>
-                <span class="small">Experience across university, research, and consulting</span>
-              </div>
-              <div class="metric">
-                <strong>International focus</strong>
-                <span class="small">Multicultural teams and European projects</span>
-              </div>
+
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-8 py-4 rounded-xl text-base">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                Book a Free Discovery Call
+              </a>
+              <a href="#services" class="btn-secondary inline-flex items-center justify-center gap-2 border border-white/10 text-white font-semibold px-8 py-4 rounded-xl text-base">
+                Learn More
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+              </a>
             </div>
           </div>
 
-          <div class="card">
-            <h3>Ideal if you...</h3>
-            <ul class="list">
-              <li>just graduated and feel lost about your next step</li>
-              <li>want to move into AI, data, or software engineering</li>
-              <li>are in your first job and need guidance</li>
-              <li>want to improve your profile and competitiveness</li>
-            </ul>
-          </div>
-        </aside>
-      </div>
-    </section>
+          <div class="fade-in hidden lg:grid gap-5">
+            <div class="glass rounded-2xl p-6">
+              <h3 class="font-bold text-white mb-3">What you can work on</h3>
+              <p class="text-gray-400 text-sm mb-5">From career direction to practical support for interviews, projects, and adapting to real-world teams and expectations.</p>
+              <div class="grid grid-cols-2 gap-3">
+                <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                  <div class="font-semibold text-white text-sm mb-1">Academia + Industry</div>
+                  <div class="text-xs text-gray-500">Experience across university, research, and consulting</div>
+                </div>
+                <div class="bg-white/5 rounded-xl p-4 border border-white/5">
+                  <div class="font-semibold text-white text-sm mb-1">International Focus</div>
+                  <div class="text-xs text-gray-500">Multicultural teams and European projects</div>
+                </div>
+              </div>
+            </div>
 
-    <section id="services">
-      <div class="container">
-        <div class="section-title">
-          <h2>Services</h2>
-          <p class="section-intro">Practical, personalized mentorship tailored to your current situation and career goals.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="service">
-            <div class="icon">🎯</div>
-            <h3>Career guidance</h3>
-            <p>Explore realistic paths within computer science and AI to make informed decisions.</p>
-            <ul class="list">
-              <li>backend, data, ML, research, cloud, consulting</li>
-              <li>pros and cons of each path</li>
-              <li>aligning your profile with market demand</li>
-            </ul>
-          </article>
-
-          <article class="service">
-            <div class="icon">🧭</div>
-            <h3>University → Industry transition</h3>
-            <p>Designed for graduates who want to land their first job with a clear strategy.</p>
-            <ul class="list">
-              <li>CV and LinkedIn review</li>
-              <li>job search strategy</li>
-              <li>interview preparation</li>
-            </ul>
-          </article>
-
-          <article class="service">
-            <div class="icon">🛠️</div>
-            <h3>On-the-job support</h3>
-            <p>Help with real challenges you face in your first role as a junior developer or engineer.</p>
-            <ul class="list">
-              <li>team communication</li>
-              <li>technical uncertainty</li>
-              <li>problem-solving and prioritization</li>
-            </ul>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="how-it-works">
-      <div class="container">
-        <div class="section-title">
-          <h2>How it works</h2>
-          <p class="section-intro">A simple, focused process aimed at real results.</p>
-        </div>
-
-        <div class="steps">
-          <article class="step">
-            <div class="step-number">1</div>
-            <h3>Share your context</h3>
-            <p>Tell me about your situation, goals, and challenges.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">2</div>
-            <h3>We analyze it</h3>
-            <p>We break down your options, blockers, and priorities.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">3</div>
-            <h3>Clear action plan</h3>
-            <p>You leave with concrete and realistic next steps.</p>
-          </article>
-          <article class="step">
-            <div class="step-number">4</div>
-            <h3>Follow-up</h3>
-            <p>Optional sessions to track progress or solve new challenges.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container">
-        <div class="section-title">
-          <h2>About me</h2>
-          <p class="section-intro">PhD in Computer Science and Artificial Intelligence with experience across academia, research, consulting, and international projects.</p>
-        </div>
-
-        <div class="grid-3">
-          <article class="service">
-            <div class="icon">🎓</div>
-            <h3>Academic background</h3>
-            <p>Strong foundation in research and deep technical understanding.</p>
-          </article>
-          <article class="service">
-            <div class="icon">🏢</div>
-            <h3>Industry experience</h3>
-            <p>Work in research companies and consulting environments.</p>
-          </article>
-          <article class="service">
-            <div class="icon">🌍</div>
-            <h3>International exposure</h3>
-            <p>Experience in multicultural teams and European-level projects.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section>
-      <div class="container">
-        <div class="section-title">
-          <h2>Typical client situations</h2>
-          <p class="section-intro">People usually come with these kinds of challenges.</p>
-        </div>
-
-        <div class="testimonials">
-          <article class="testimonial">
-            <p class="quote">“I needed clarity on which path to choose after graduating and how to position myself.”</p>
-            <div class="who">Recent graduate</div>
-          </article>
-          <article class="testimonial">
-            <p class="quote">“I started my first job but struggled with expectations, communication, and technical uncertainty.”</p>
-            <div class="who">Junior professional</div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="container contact-box">
-        <div>
-          <h2>Contact</h2>
-          <p>
-            If you're interested in a session or want to share your situation, feel free to reach out via email or LinkedIn.
-          </p>
-          <div class="contact-links">
-            <a class="contact-link" href="mailto:boris.villazon.terrazas@gmail.com">✉️ boris.villazon.terrazas@gmail.com</a>
-            <a class="contact-link" href="https://www.linkedin.com/in/boris-villazon-terrazas-phd/" target="_blank">LinkedIn</a>
+            <div class="glass rounded-2xl p-6">
+              <h3 class="font-bold text-white mb-3">Ideal if you...</h3>
+              <ul class="space-y-3">
+                <li class="flex items-start gap-3 text-sm text-gray-400">
+                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Just graduated and feel lost about your next step
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-400">
+                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Want to move into AI, data, or software engineering
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-400">
+                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Are in your first job and need guidance
+                </li>
+                <li class="flex items-start gap-3 text-sm text-gray-400">
+                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                  Want to improve your profile and competitiveness
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
+      </div>
+    </section>
 
-        <div class="contact-panel">
-          <h3>Quick overview</h3>
-          <p><strong>Type:</strong> 1:1 mentorship</p>
-          <p><strong>Target:</strong> graduates and junior professionals</p>
-          <p><strong>Topics:</strong> career, interviews, first job, real-world issues</p>
-          <p><strong>Format:</strong> online sessions</p>
+    <!-- Services Section -->
+    <section id="services" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
+            What I Offer
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Services</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">Practical, personalized mentorship tailored to your current situation and career goals.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 fade-in">
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">Career Guidance</h3>
+            <p class="text-gray-400 text-sm mb-4">Explore realistic paths within computer science and AI to make informed decisions.</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Backend, data, ML, research, cloud, consulting
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Pros and cons of each path
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Aligning your profile with market demand
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-accent-500/15 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">University to Industry Transition</h3>
+            <p class="text-gray-400 text-sm mb-4">Designed for graduates who want to land their first job with a clear strategy.</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-accent-400 mt-1">&#8226;</span>
+                CV and LinkedIn review
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-accent-400 mt-1">&#8226;</span>
+                Job search strategy
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-accent-400 mt-1">&#8226;</span>
+                Interview preparation
+              </li>
+            </ul>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-5">
+              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-3">On-the-Job Support</h3>
+            <p class="text-gray-400 text-sm mb-4">Help with real challenges you face in your first role as a junior developer or engineer.</p>
+            <ul class="space-y-2.5">
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Team communication
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Technical uncertainty
+              </li>
+              <li class="flex items-start gap-2 text-sm text-gray-500">
+                <span class="text-brand-400 mt-1">&#8226;</span>
+                Problem-solving and prioritization
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="py-24 md:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/[0.03] to-transparent pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto px-6 relative">
+        <div class="text-center mb-16 fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-sm font-medium mb-4">
+            Simple Process
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">How It Works</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">A simple, focused process aimed at real results.</p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
+          <div class="glass rounded-2xl p-6 relative">
+            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">1</div>
+            <h3 class="font-bold text-white mb-2">Share Your Context</h3>
+            <p class="text-sm text-gray-400">Tell me about your situation, goals, and challenges.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 relative">
+            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">2</div>
+            <h3 class="font-bold text-white mb-2">We Analyze It</h3>
+            <p class="text-sm text-gray-400">We break down your options, blockers, and priorities.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 relative">
+            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">3</div>
+            <h3 class="font-bold text-white mb-2">Clear Action Plan</h3>
+            <p class="text-sm text-gray-400">You leave with concrete and realistic next steps.</p>
+          </div>
+          <div class="glass rounded-2xl p-6 relative">
+            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">4</div>
+            <h3 class="font-bold text-white mb-2">Follow-Up</h3>
+            <p class="text-sm text-gray-400">Optional sessions to track progress or solve new challenges.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
+            Transparent Pricing
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Invest in Your Career</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">Choose the plan that fits your needs. All sessions are 1:1, online, and tailored to your situation.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto fade-in">
+          <!-- Single Session -->
+          <div class="glass rounded-2xl p-7 card-hover flex flex-col overflow-hidden">
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-white mb-1">Single Session</h3>
+              <p class="text-sm text-gray-500">Perfect for a focused, one-time consultation</p>
+            </div>
+            <div class="mb-6">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white">50&euro;</span>
+              <span class="text-gray-500 text-sm ml-1">/ session</span>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                60-minute session
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Personalized advice
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Action items recap
+              </li>
+            </ul>
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-secondary block text-center border border-white/10 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+              Book a Session
+            </a>
+          </div>
+
+          <!-- 5-Pack -->
+          <div class="pricing-popular rounded-2xl p-7 card-hover flex flex-col relative">
+            <div class="flex justify-center mb-4">
+              <span class="bg-gradient-to-r from-brand-500 to-accent-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">Most Popular</span>
+            </div>
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-white mb-1">5-Session Pack</h3>
+              <p class="text-sm text-gray-500">Best value for ongoing mentorship</p>
+            </div>
+            <div class="mb-6">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white">200&euro;</span>
+              <span class="text-gray-500 text-sm ml-1">/ 5 sessions</span>
+              <div class="text-accent-400 text-sm font-medium mt-1">Save 50&euro; vs individual</div>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                5 x 60-minute sessions
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Progress tracking
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Email support between sessions
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Flexible scheduling
+              </li>
+            </ul>
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary block text-center text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+              Get Started
+            </a>
+          </div>
+
+          <!-- Monthly -->
+          <div class="glass rounded-2xl p-7 card-hover flex flex-col overflow-hidden">
+            <div class="mb-6">
+              <h3 class="text-lg font-bold text-white mb-1">Monthly Mentorship</h3>
+              <p class="text-sm text-gray-500">Continuous support as you grow</p>
+            </div>
+            <div class="mb-6">
+              <span class="text-3xl sm:text-4xl font-extrabold text-white">150&euro;</span>
+              <span class="text-gray-500 text-sm ml-1">/ month</span>
+            </div>
+            <ul class="space-y-3 mb-8 flex-1">
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                2 sessions per month
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Ongoing career guidance
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Priority email support
+              </li>
+              <li class="flex items-center gap-2.5 text-sm text-gray-400">
+                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                Cancel anytime
+              </li>
+            </ul>
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-secondary block text-center border border-white/10 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+              Subscribe
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-24 md:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/[0.03] to-transparent pointer-events-none"></div>
+      <div class="max-w-6xl mx-auto px-6 relative">
+        <div class="text-center mb-16 fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
+            Your Mentor
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">About Me</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">PhD in Computer Science and Artificial Intelligence with experience across academia, research, consulting, and international projects.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 fade-in">
+          <div class="glass rounded-2xl p-7 card-hover text-center">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Academic Background</h3>
+            <p class="text-sm text-gray-400">Strong foundation in research and deep technical understanding.</p>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover text-center">
+            <div class="w-14 h-14 rounded-2xl bg-accent-500/15 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">Industry Experience</h3>
+            <p class="text-sm text-gray-400">Work in research companies and consulting environments.</p>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover text-center">
+            <div class="w-14 h-14 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-5">
+              <svg class="w-7 h-7 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+            </div>
+            <h3 class="text-lg font-bold text-white mb-2">International Exposure</h3>
+            <p class="text-sm text-gray-400">Experience in multicultural teams and European-level projects.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 md:py-32">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="text-center mb-16 fade-in">
+          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-sm font-medium mb-4">
+            Success Stories
+          </div>
+          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">What Mentees Say</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">Hear from people who have worked with me to advance their careers.</p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6 fade-in">
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+              "I needed clarity on which path to choose after graduating. The sessions helped me see my options clearly and I landed a data engineering role within two months."
+            </blockquote>
+            <div>
+              <div class="font-semibold text-white text-sm">Maria L.</div>
+              <div class="text-xs text-gray-500">Recent CS Graduate</div>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+              "I started my first job but struggled with expectations and technical uncertainty. Having a mentor who understood both academia and industry made all the difference."
+            </blockquote>
+            <div>
+              <div class="font-semibold text-white text-sm">Daniel K.</div>
+              <div class="text-xs text-gray-500">Junior Software Engineer</div>
+            </div>
+          </div>
+
+          <div class="glass rounded-2xl p-7 card-hover">
+            <div class="flex gap-1 mb-4">
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+              "The CV review and interview prep were incredibly practical. I went from zero callbacks to three offers in different countries. Highly recommend for anyone entering the EU tech market."
+            </blockquote>
+            <div>
+              <div class="font-semibold text-white text-sm">Ana R.</div>
+              <div class="text-xs text-gray-500">ML Engineer, formerly in academia</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-24 md:py-32 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-600/[0.06] to-transparent pointer-events-none"></div>
+      <div class="max-w-3xl mx-auto px-6 text-center relative fade-in">
+        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Ready to Take the Next Step?</h2>
+        <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+          Book a free discovery call. Let's talk about your situation and see if mentorship is the right fit for you.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-10 py-4 rounded-xl text-base">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+            Book a Free Discovery Call
+          </a>
+          <a href="mailto:boris.villazon.terrazas@gmail.com" class="btn-secondary inline-flex items-center justify-center gap-2 border border-white/10 text-white font-semibold px-10 py-4 rounded-xl text-base">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Send an Email
+          </a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
-  <footer class="footer container">
-    © <span id="year"></span> Tech & AI Mentorship
+  <!-- Footer -->
+  <footer class="border-t border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-12">
+      <div class="grid md:grid-cols-3 gap-10 md:gap-6">
+        <!-- Brand -->
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-extrabold text-xs text-white">
+              AI
+            </div>
+            <div class="font-bold text-white">Tech & AI Mentorship</div>
+          </div>
+          <p class="text-sm text-gray-500 max-w-xs">Career guidance and professional growth for computer science graduates and junior professionals.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div>
+          <h4 class="font-semibold text-white text-sm mb-4">Quick Links</h4>
+          <nav class="flex flex-col gap-2.5">
+            <a href="#services" class="text-sm text-gray-500 hover:text-white transition-colors">Services</a>
+            <a href="#how-it-works" class="text-sm text-gray-500 hover:text-white transition-colors">How It Works</a>
+            <a href="#pricing" class="text-sm text-gray-500 hover:text-white transition-colors">Pricing</a>
+            <a href="#testimonials" class="text-sm text-gray-500 hover:text-white transition-colors">Testimonials</a>
+          </nav>
+        </div>
+
+        <!-- Connect -->
+        <div>
+          <h4 class="font-semibold text-white text-sm mb-4">Connect</h4>
+          <div class="flex flex-col gap-3">
+            <a href="mailto:boris.villazon.terrazas@gmail.com" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+              boris.villazon.terrazas@gmail.com
+            </a>
+            <a href="https://www.linkedin.com/in/boris-villazon-terrazas-phd/" target="_blank" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              LinkedIn
+            </a>
+            <a href="https://github.com/boricles" target="_blank" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
+              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+              GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div class="border-t border-white/5 mt-10 pt-8 text-center">
+        <p class="text-sm text-gray-600">&copy; <span id="year"></span> Tech & AI Mentorship. All rights reserved.</p>
+      </div>
+    </div>
   </footer>
 
   <script>
+    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu toggle
+    const toggle = document.getElementById('mobile-toggle');
+    const menu = document.getElementById('mobile-menu');
+    toggle.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+    });
+
+    // Close mobile menu on link click
+    menu.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => menu.classList.add('hidden'));
+    });
+
+    // Scroll-triggered fade-in animations
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   </script>
 </body>
 </html>

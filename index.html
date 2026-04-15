@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="UTF-8" />
@@ -11,141 +10,67 @@
     tailwind.config = {
       theme: {
         extend: {
-          colors: {
-            brand: {
-              50: '#eff6ff',
-              100: '#dbeafe',
-              200: '#bfdbfe',
-              300: '#93c5fd',
-              400: '#60a5fa',
-              500: '#3b82f6',
-              600: '#2563eb',
-              700: '#1d4ed8',
-              800: '#1e3a5f',
-              900: '#0f172a',
-              950: '#0a0f1a',
-            },
-            accent: {
-              400: '#34d399',
-              500: '#10b981',
-              600: '#059669',
-            }
-          },
           fontFamily: {
-            sans: ['Inter', 'system-ui', '-apple-system', 'Segoe UI', 'Roboto', 'sans-serif'],
+            sans: ['"Space Grotesk Variable"', '"Space Grotesk"', 'system-ui', 'sans-serif'],
+            mono: ['ui-monospace', 'SFMono-Regular', 'monospace'],
+          },
+          colors: {
+            base: {
+              DEFAULT: '#020617',
+              50: '#f8fafc',
+            },
           }
         }
       }
     }
   </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/@fontsource-variable/space-grotesk/index.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet" />
   <style>
-    body { font-family: 'Inter', system-ui, -apple-system, sans-serif; }
-    .gradient-text {
-      background: linear-gradient(135deg, #3b82f6 0%, #10b981 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+    body {
+      font-family: 'Space Grotesk Variable', 'Space Grotesk', system-ui, sans-serif;
     }
-    .glass {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-    }
-    .card-hover {
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-    .card-hover:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);
-      border-color: rgba(59, 130, 246, 0.3);
-    }
-    .pricing-popular {
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(16, 185, 129, 0.08));
-      border-color: rgba(59, 130, 246, 0.4);
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.3);
-    }
-    .btn-primary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.45);
-    }
-    .btn-secondary {
-      transition: all 0.3s ease;
-    }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.1);
-      transform: translateY(-2px);
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .hero-glow {
-      position: absolute;
-      width: 600px;
-      height: 600px;
-      border-radius: 50%;
-      filter: blur(120px);
-      opacity: 0.15;
-      pointer-events: none;
+    ::selection {
+      background: rgba(99, 102, 241, 0.4);
     }
   </style>
 </head>
-<body class="bg-brand-950 text-gray-100 antialiased">
+<body class="bg-base text-slate-100 antialiased">
 
   <!-- Navigation -->
-  <header class="fixed top-0 left-0 right-0 z-50 border-b border-white/5" style="background: rgba(10, 15, 26, 0.8); backdrop-filter: blur(20px);">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="flex items-center justify-between h-18 py-4">
-        <a href="#" class="flex items-center gap-3 group">
-          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-extrabold text-sm text-white shadow-lg shadow-brand-500/25">
-            AI
-          </div>
-          <div>
-            <div class="font-bold text-white tracking-tight">Tech & AI Mentorship</div>
-            <div class="text-xs text-gray-400">Career guidance & professional growth</div>
-          </div>
+  <header class="sticky top-0 z-50 w-full border-b border-indigo-800/60 bg-base/95 backdrop-blur supports-backdrop-filter:bg-base/60">
+    <div class="max-w-7xl mx-auto px-4 md:px-8">
+      <div class="flex items-center justify-between h-16">
+        <a href="#" class="font-bold text-lg tracking-tight text-white hover:text-orange-400 transition-colors">
+          Tech & AI Mentorship
         </a>
 
-        <nav class="hidden md:flex items-center gap-8">
-          <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
-          <a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How It Works</a>
-          <a href="#pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a>
-          <a href="#about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a>
-          <a href="#testimonials" class="text-sm text-gray-400 hover:text-white transition-colors">Testimonials</a>
-          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary text-sm font-semibold text-white px-5 py-2.5 rounded-xl">
+        <nav class="hidden md:flex items-center gap-2">
+          <a href="#services" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Services</a>
+          <a href="#how-it-works" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">How It Works</a>
+          <a href="#pricing" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Pricing</a>
+          <a href="#about" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">About</a>
+          <a href="#testimonials" class="px-3 py-2 rounded-md text-sm font-medium text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Testimonials</a>
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="ml-4 bg-indigo-600 text-white font-medium text-sm px-6 py-2.5 rounded-md hover:bg-orange-400 transition-colors">
             Book a Session
           </a>
         </nav>
 
-        <!-- Mobile menu button -->
-        <button id="mobile-toggle" class="md:hidden text-gray-400 hover:text-white p-2" aria-label="Toggle menu">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path id="menu-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-          </svg>
+        <button id="mobile-toggle" class="md:hidden p-2 text-slate-400 hover:text-white transition-colors" aria-label="Toggle menu">
+          <i id="menu-icon-open" class="ri-menu-line text-2xl"></i>
+          <i id="menu-icon-close" class="ri-close-line text-2xl hidden"></i>
         </button>
       </div>
 
       <!-- Mobile menu -->
-      <nav id="mobile-menu" class="hidden md:hidden pb-6 border-t border-white/5 pt-4">
-        <div class="flex flex-col gap-4">
-          <a href="#services" class="text-sm text-gray-400 hover:text-white transition-colors">Services</a>
-          <a href="#how-it-works" class="text-sm text-gray-400 hover:text-white transition-colors">How It Works</a>
-          <a href="#pricing" class="text-sm text-gray-400 hover:text-white transition-colors">Pricing</a>
-          <a href="#about" class="text-sm text-gray-400 hover:text-white transition-colors">About</a>
-          <a href="#testimonials" class="text-sm text-gray-400 hover:text-white transition-colors">Testimonials</a>
-          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary text-sm font-semibold text-white px-5 py-2.5 rounded-xl text-center mt-2">
+      <nav id="mobile-menu" class="hidden md:hidden pb-6 border-t border-indigo-800/60 pt-4">
+        <div class="flex flex-col gap-1">
+          <a href="#services" class="flex items-center gap-3 py-3 px-4 rounded-md text-lg text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Services</a>
+          <a href="#how-it-works" class="flex items-center gap-3 py-3 px-4 rounded-md text-lg text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">How It Works</a>
+          <a href="#pricing" class="flex items-center gap-3 py-3 px-4 rounded-md text-lg text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Pricing</a>
+          <a href="#about" class="flex items-center gap-3 py-3 px-4 rounded-md text-lg text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">About</a>
+          <a href="#testimonials" class="flex items-center gap-3 py-3 px-4 rounded-md text-lg text-slate-300 hover:text-orange-400 hover:bg-orange-400/10 transition-all">Testimonials</a>
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="mt-2 bg-indigo-600 text-white font-medium text-lg px-6 py-3 rounded-md text-center hover:bg-orange-400 transition-colors">
             Book a Session
           </a>
         </div>
@@ -153,156 +78,117 @@
     </div>
   </header>
 
-  <main>
+  <main class="flex flex-col min-h-screen text-indigo-100">
 
     <!-- Hero Section -->
-    <section class="relative min-h-screen flex items-center overflow-hidden pt-20">
-      <div class="hero-glow bg-brand-500 top-0 left-1/4"></div>
-      <div class="hero-glow bg-accent-500 top-1/4 right-0"></div>
+    <section class="relative min-h-[calc(100vh-4rem)] w-full flex flex-col justify-center items-center px-4 md:px-8 text-center">
+      <div class="relative z-10 space-y-8 max-w-5xl mx-auto">
+        <div class="font-mono text-sm md:text-base text-orange-400 tracking-[0.2em] uppercase">
+          For CS Graduates & Junior Professionals
+        </div>
 
-      <div class="max-w-6xl mx-auto px-6 py-20 md:py-32">
-        <div class="grid lg:grid-cols-2 gap-16 items-center">
-          <div class="fade-in">
-            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-8">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              For CS graduates & junior professionals
-            </div>
+        <h1 class="text-4xl md:text-6xl lg:text-7xl xl:text-[5.5rem] font-bold tracking-tight text-white text-balance">
+          <i class="ri-flashlight-line text-orange-400"></i> Your bridge between university and the real world of tech & AI.
+        </h1>
 
-            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-[1.08] mb-6">
-              Your bridge between <span class="gradient-text">university and the real world</span> of tech & AI.
-            </h1>
+        <p class="text-lg md:text-xl lg:text-2xl text-indigo-200 max-w-3xl mx-auto text-balance">
+          I help computer science graduates and junior professionals make better career decisions, break into the industry with clarity, and navigate real challenges in their first job.
+        </p>
 
-            <p class="text-lg text-gray-400 leading-relaxed max-w-xl mb-10">
-              I help computer science graduates and junior professionals make better career decisions, break into the industry with clarity, and navigate real challenges in their first job.
-            </p>
-
-            <div class="flex flex-col sm:flex-row gap-4">
-              <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-8 py-4 rounded-xl text-base">
-                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
-                Book a Free Discovery Call
-              </a>
-              <a href="#services" class="btn-secondary inline-flex items-center justify-center gap-2 border border-white/10 text-white font-semibold px-8 py-4 rounded-xl text-base">
-                Learn More
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-              </a>
-            </div>
-          </div>
-
-          <div class="fade-in hidden lg:grid gap-5">
-            <div class="glass rounded-2xl p-6">
-              <h3 class="font-bold text-white mb-3">What you can work on</h3>
-              <p class="text-gray-400 text-sm mb-5">From career direction to practical support for interviews, projects, and adapting to real-world teams and expectations.</p>
-              <div class="grid grid-cols-2 gap-3">
-                <div class="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <div class="font-semibold text-white text-sm mb-1">Academia + Industry</div>
-                  <div class="text-xs text-gray-500">Experience across university, research, and consulting</div>
-                </div>
-                <div class="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <div class="font-semibold text-white text-sm mb-1">International Focus</div>
-                  <div class="text-xs text-gray-500">Multicultural teams and European projects</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="glass rounded-2xl p-6">
-              <h3 class="font-bold text-white mb-3">Ideal if you...</h3>
-              <ul class="space-y-3">
-                <li class="flex items-start gap-3 text-sm text-gray-400">
-                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Just graduated and feel lost about your next step
-                </li>
-                <li class="flex items-start gap-3 text-sm text-gray-400">
-                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Want to move into AI, data, or software engineering
-                </li>
-                <li class="flex items-start gap-3 text-sm text-gray-400">
-                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Are in your first job and need guidance
-                </li>
-                <li class="flex items-start gap-3 text-sm text-gray-400">
-                  <svg class="w-5 h-5 text-accent-400 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                  Want to improve your profile and competitiveness
-                </li>
-              </ul>
-            </div>
-          </div>
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="inline-flex items-center justify-center gap-2 bg-indigo-600 text-white font-medium rounded-md h-12 px-8 text-lg hover:bg-orange-400 transition-colors w-full sm:w-auto">
+            <i class="ri-calendar-line"></i>
+            Book a Free Discovery Call
+          </a>
+          <a href="#services" class="inline-flex items-center justify-center gap-2 rounded-md border border-indigo-700 text-indigo-100 font-medium h-12 px-8 text-lg hover:bg-orange-400 hover:text-white hover:border-orange-400 transition-all w-full sm:w-auto">
+            Learn More
+            <i class="ri-arrow-down-s-line"></i>
+          </a>
         </div>
       </div>
     </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
-            What I Offer
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Services</h2>
-          <p class="text-gray-400 max-w-2xl mx-auto">Practical, personalized mentorship tailored to your current situation and career goals.</p>
+    <section id="services" class="relative z-10 py-24 lg:py-32 px-4 md:px-8 bg-slate-900/50">
+      <div class="max-w-5xl mx-auto space-y-12 lg:space-y-16">
+        <div class="text-center">
+          <div class="font-mono text-sm text-orange-400 tracking-[0.2em] uppercase mb-4">What I Offer</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <i class="ri-compass-3-line text-orange-400"></i> Services
+          </h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 fade-in">
-          <div class="glass rounded-2xl p-7 card-hover">
-            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-5">
-              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <!-- Career Guidance -->
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
+            <div class="flex items-start gap-4 mb-5">
+              <div class="p-3 rounded-lg bg-teal-900/50 text-teal-300 group-hover:bg-orange-400 group-hover:text-white transition-colors">
+                <i class="ri-shield-check-line text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-xl md:text-2xl text-white pt-1">Career Guidance</h3>
             </div>
-            <h3 class="text-lg font-bold text-white mb-3">Career Guidance</h3>
-            <p class="text-gray-400 text-sm mb-4">Explore realistic paths within computer science and AI to make informed decisions.</p>
-            <ul class="space-y-2.5">
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+            <p class="text-indigo-200 text-lg mb-5">Explore realistic paths within computer science and AI to make informed decisions.</p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Backend, data, ML, research, cloud, consulting
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Pros and cons of each path
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Aligning your profile with market demand
               </li>
             </ul>
           </div>
 
-          <div class="glass rounded-2xl p-7 card-hover">
-            <div class="w-12 h-12 rounded-xl bg-accent-500/15 flex items-center justify-center mb-5">
-              <svg class="w-6 h-6 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          <!-- University to Industry -->
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
+            <div class="flex items-start gap-4 mb-5">
+              <div class="p-3 rounded-lg bg-teal-900/50 text-teal-300 group-hover:bg-orange-400 group-hover:text-white transition-colors">
+                <i class="ri-rocket-2-line text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-xl md:text-2xl text-white pt-1">University to Industry</h3>
             </div>
-            <h3 class="text-lg font-bold text-white mb-3">University to Industry Transition</h3>
-            <p class="text-gray-400 text-sm mb-4">Designed for graduates who want to land their first job with a clear strategy.</p>
-            <ul class="space-y-2.5">
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-accent-400 mt-1">&#8226;</span>
+            <p class="text-indigo-200 text-lg mb-5">Designed for graduates who want to land their first job with a clear strategy.</p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 CV and LinkedIn review
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-accent-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Job search strategy
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-accent-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Interview preparation
               </li>
             </ul>
           </div>
 
-          <div class="glass rounded-2xl p-7 card-hover">
-            <div class="w-12 h-12 rounded-xl bg-brand-500/15 flex items-center justify-center mb-5">
-              <svg class="w-6 h-6 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          <!-- On-the-Job Support -->
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
+            <div class="flex items-start gap-4 mb-5">
+              <div class="p-3 rounded-lg bg-teal-900/50 text-teal-300 group-hover:bg-orange-400 group-hover:text-white transition-colors">
+                <i class="ri-settings-4-line text-2xl"></i>
+              </div>
+              <h3 class="font-semibold text-xl md:text-2xl text-white pt-1">On-the-Job Support</h3>
             </div>
-            <h3 class="text-lg font-bold text-white mb-3">On-the-Job Support</h3>
-            <p class="text-gray-400 text-sm mb-4">Help with real challenges you face in your first role as a junior developer or engineer.</p>
-            <ul class="space-y-2.5">
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+            <p class="text-indigo-200 text-lg mb-5">Help with real challenges you face in your first role as a junior developer or engineer.</p>
+            <ul class="space-y-3">
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Team communication
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Technical uncertainty
               </li>
-              <li class="flex items-start gap-2 text-sm text-gray-500">
-                <span class="text-brand-400 mt-1">&#8226;</span>
+              <li class="flex items-center gap-3 text-slate-300 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Problem-solving and prioritization
               </li>
             </ul>
@@ -312,149 +198,149 @@
     </section>
 
     <!-- How It Works Section -->
-    <section id="how-it-works" class="py-24 md:py-32 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/[0.03] to-transparent pointer-events-none"></div>
-      <div class="max-w-6xl mx-auto px-6 relative">
-        <div class="text-center mb-16 fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-sm font-medium mb-4">
-            Simple Process
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">How It Works</h2>
-          <p class="text-gray-400 max-w-2xl mx-auto">A simple, focused process aimed at real results.</p>
+    <section id="how-it-works" class="relative z-10 py-24 lg:py-32 px-4 md:px-8">
+      <div class="max-w-5xl mx-auto space-y-12 lg:space-y-16">
+        <div class="text-center">
+          <div class="font-mono text-sm text-orange-400 tracking-[0.2em] uppercase mb-4">Simple Process</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <i class="ri-route-line text-orange-400"></i> How It Works
+          </h2>
+          <p class="mt-4 text-lg lg:text-xl text-indigo-200 max-w-2xl mx-auto">A simple, focused process aimed at real results.</p>
         </div>
 
-        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 fade-in">
-          <div class="glass rounded-2xl p-6 relative">
-            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">1</div>
-            <h3 class="font-bold text-white mb-2">Share Your Context</h3>
-            <p class="text-sm text-gray-400">Tell me about your situation, goals, and challenges.</p>
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-900/50 text-orange-400 text-2xl font-bold mb-5 group-hover:bg-orange-400 group-hover:text-white transition-colors">01</div>
+            <h3 class="font-semibold text-xl text-white mb-3">Share Your Context</h3>
+            <p class="text-indigo-200 text-lg">Tell me about your situation, goals, and challenges.</p>
           </div>
-          <div class="glass rounded-2xl p-6 relative">
-            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">2</div>
-            <h3 class="font-bold text-white mb-2">We Analyze It</h3>
-            <p class="text-sm text-gray-400">We break down your options, blockers, and priorities.</p>
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-900/50 text-orange-400 text-2xl font-bold mb-5 group-hover:bg-orange-400 group-hover:text-white transition-colors">02</div>
+            <h3 class="font-semibold text-xl text-white mb-3">We Analyze It</h3>
+            <p class="text-indigo-200 text-lg">We break down your options, blockers, and priorities.</p>
           </div>
-          <div class="glass rounded-2xl p-6 relative">
-            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">3</div>
-            <h3 class="font-bold text-white mb-2">Clear Action Plan</h3>
-            <p class="text-sm text-gray-400">You leave with concrete and realistic next steps.</p>
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-900/50 text-orange-400 text-2xl font-bold mb-5 group-hover:bg-orange-400 group-hover:text-white transition-colors">03</div>
+            <h3 class="font-semibold text-xl text-white mb-3">Clear Action Plan</h3>
+            <p class="text-indigo-200 text-lg">You leave with concrete and realistic next steps.</p>
           </div>
-          <div class="glass rounded-2xl p-6 relative">
-            <div class="w-10 h-10 rounded-full bg-accent-500/15 flex items-center justify-center font-extrabold text-accent-400 text-sm mb-5">4</div>
-            <h3 class="font-bold text-white mb-2">Follow-Up</h3>
-            <p class="text-sm text-gray-400">Optional sessions to track progress or solve new challenges.</p>
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 text-center">
+            <div class="inline-flex items-center justify-center w-14 h-14 rounded-full bg-indigo-900/50 text-orange-400 text-2xl font-bold mb-5 group-hover:bg-orange-400 group-hover:text-white transition-colors">04</div>
+            <h3 class="font-semibold text-xl text-white mb-3">Follow-Up</h3>
+            <p class="text-indigo-200 text-lg">Optional sessions to track progress or solve new challenges.</p>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Pricing Section -->
-    <section id="pricing" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
-            Transparent Pricing
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Invest in Your Career</h2>
-          <p class="text-gray-400 max-w-2xl mx-auto">Choose the plan that fits your needs. All sessions are 1:1, online, and tailored to your situation.</p>
+    <section id="pricing" class="relative z-10 py-24 lg:py-32 px-4 md:px-8 bg-slate-900/50">
+      <div class="max-w-5xl mx-auto space-y-12 lg:space-y-16">
+        <div class="text-center">
+          <div class="font-mono text-sm text-orange-400 tracking-[0.2em] uppercase mb-4">Transparent Pricing</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <i class="ri-price-tag-3-line text-orange-400"></i> Invest in Your Career
+          </h2>
+          <p class="mt-4 text-lg lg:text-xl text-indigo-200 max-w-2xl mx-auto">Choose the plan that fits your needs. All sessions are 1:1, online, and tailored to your situation.</p>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto fade-in">
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8 max-w-4xl mx-auto">
           <!-- Single Session -->
-          <div class="glass rounded-2xl p-7 card-hover flex flex-col overflow-hidden">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 flex flex-col">
             <div class="mb-6">
-              <h3 class="text-lg font-bold text-white mb-1">Single Session</h3>
-              <p class="text-sm text-gray-500">Perfect for a focused, one-time consultation</p>
+              <h3 class="font-semibold text-xl text-white mb-1">Single Session</h3>
+              <p class="text-indigo-300">One-time consultation</p>
             </div>
             <div class="mb-6">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white">50&euro;</span>
-              <span class="text-gray-500 text-sm ml-1">/ session</span>
+              <span class="text-5xl font-bold text-white">100&euro;</span>
+              <span class="text-indigo-400 ml-2">/ session</span>
             </div>
             <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 60-minute session
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Personalized advice
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Action items recap
               </li>
             </ul>
-            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-secondary block text-center border border-white/10 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="block text-center rounded-md border border-indigo-700 text-indigo-100 font-medium py-3 text-lg hover:bg-orange-400 hover:text-white hover:border-orange-400 transition-all">
               Book a Session
             </a>
           </div>
 
-          <!-- 5-Pack -->
-          <div class="pricing-popular rounded-2xl p-7 card-hover flex flex-col relative">
-            <div class="flex justify-center mb-4">
-              <span class="bg-gradient-to-r from-brand-500 to-accent-500 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-lg">Most Popular</span>
+          <!-- 5-Pack (Popular) -->
+          <div class="group rounded-lg border-2 border-orange-400 bg-base p-6 lg:p-8 transition-all flex flex-col relative">
+            <div class="absolute -top-3.5 left-1/2 -translate-x-1/2">
+              <span class="bg-orange-400 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full">Most Popular</span>
+            </div>
+            <div class="mb-6 mt-2">
+              <h3 class="font-semibold text-xl text-white mb-1">5-Session Pack</h3>
+              <p class="text-indigo-300">Best value for ongoing mentorship</p>
             </div>
             <div class="mb-6">
-              <h3 class="text-lg font-bold text-white mb-1">5-Session Pack</h3>
-              <p class="text-sm text-gray-500">Best value for ongoing mentorship</p>
-            </div>
-            <div class="mb-6">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white">200&euro;</span>
-              <span class="text-gray-500 text-sm ml-1">/ 5 sessions</span>
-              <div class="text-accent-400 text-sm font-medium mt-1">Save 50&euro; vs individual</div>
+              <span class="text-5xl font-bold text-white">400&euro;</span>
+              <span class="text-indigo-400 ml-2">/ 5 sessions</span>
+              <div class="text-orange-400 font-medium mt-1">Save 100&euro; &mdash; 80&euro;/session</div>
             </div>
             <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 5 x 60-minute sessions
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Progress tracking
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Email support between sessions
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Flexible scheduling
               </li>
             </ul>
-            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary block text-center text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="block text-center rounded-md bg-indigo-600 text-white font-medium py-3 text-lg hover:bg-orange-400 transition-colors">
               Get Started
             </a>
           </div>
 
           <!-- Monthly -->
-          <div class="glass rounded-2xl p-7 card-hover flex flex-col overflow-hidden">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400 flex flex-col">
             <div class="mb-6">
-              <h3 class="text-lg font-bold text-white mb-1">Monthly Mentorship</h3>
-              <p class="text-sm text-gray-500">Continuous support as you grow</p>
+              <h3 class="font-semibold text-xl text-white mb-1">Monthly Mentorship</h3>
+              <p class="text-indigo-300">Continuous support as you grow</p>
             </div>
             <div class="mb-6">
-              <span class="text-3xl sm:text-4xl font-extrabold text-white">150&euro;</span>
-              <span class="text-gray-500 text-sm ml-1">/ month</span>
+              <span class="text-5xl font-bold text-white">300&euro;</span>
+              <span class="text-indigo-400 ml-2">/ month</span>
+              <div class="text-orange-400 font-medium mt-1">Up to 4 sessions &mdash; 75&euro;/session</div>
             </div>
             <ul class="space-y-3 mb-8 flex-1">
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-                2 sessions per month
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
+                Up to 4 sessions per month
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Ongoing career guidance
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Priority email support
               </li>
-              <li class="flex items-center gap-2.5 text-sm text-gray-400">
-                <svg class="w-4 h-4 text-accent-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+              <li class="flex items-center gap-3 text-indigo-200 text-lg">
+                <i class="ri-check-line text-teal-400 shrink-0"></i>
                 Cancel anytime
               </li>
             </ul>
-            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-secondary block text-center border border-white/10 text-white font-semibold px-6 py-3.5 rounded-xl text-sm">
+            <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="block text-center rounded-md border border-indigo-700 text-indigo-100 font-medium py-3 text-lg hover:bg-orange-400 hover:text-white hover:border-orange-400 transition-all">
               Subscribe
             </a>
           </div>
@@ -463,105 +349,80 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="py-24 md:py-32 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-500/[0.03] to-transparent pointer-events-none"></div>
-      <div class="max-w-6xl mx-auto px-6 relative">
-        <div class="text-center mb-16 fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-500/10 border border-brand-500/20 text-brand-300 text-sm font-medium mb-4">
-            Your Mentor
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">About Me</h2>
-          <p class="text-gray-400 max-w-2xl mx-auto">PhD in Computer Science and Artificial Intelligence with experience across academia, research, consulting, and international projects.</p>
+    <section id="about" class="relative z-10 py-24 lg:py-32 px-4 md:px-8">
+      <div class="max-w-5xl mx-auto space-y-12 lg:space-y-16">
+        <div class="text-center">
+          <div class="font-mono text-sm text-orange-400 tracking-[0.2em] uppercase mb-4">Your Mentor</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <i class="ri-user-star-line text-orange-400"></i> About Me
+          </h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 fade-in">
-          <div class="glass rounded-2xl p-7 card-hover text-center">
-            <div class="w-14 h-14 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Academic Background</h3>
-            <p class="text-sm text-gray-400">Strong foundation in research and deep technical understanding.</p>
-          </div>
-
-          <div class="glass rounded-2xl p-7 card-hover text-center">
-            <div class="w-14 h-14 rounded-2xl bg-accent-500/15 flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-accent-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">Industry Experience</h3>
-            <p class="text-sm text-gray-400">Work in research companies and consulting environments.</p>
-          </div>
-
-          <div class="glass rounded-2xl p-7 card-hover text-center">
-            <div class="w-14 h-14 rounded-2xl bg-brand-500/15 flex items-center justify-center mx-auto mb-5">
-              <svg class="w-7 h-7 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-            </div>
-            <h3 class="text-lg font-bold text-white mb-2">International Exposure</h3>
-            <p class="text-sm text-gray-400">Experience in multicultural teams and European-level projects.</p>
-          </div>
+        <div class="max-w-3xl mx-auto text-lg lg:text-xl text-indigo-200 leading-relaxed text-center">
+          <p>I'm Boris &mdash; a computer scientist with a PhD in AI who's spent over a decade working across academia, research labs, and enterprise consulting in Latin America and Europe. I know what it's like to start from scratch in a new continent, face tough career decisions, and figure things out without a roadmap. That experience is what I bring to every mentorship session.</p>
         </div>
       </div>
     </section>
 
     <!-- Testimonials Section -->
-    <section id="testimonials" class="py-24 md:py-32">
-      <div class="max-w-6xl mx-auto px-6">
-        <div class="text-center mb-16 fade-in">
-          <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent-500/10 border border-accent-500/20 text-accent-400 text-sm font-medium mb-4">
-            Success Stories
-          </div>
-          <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">What Mentees Say</h2>
-          <p class="text-gray-400 max-w-2xl mx-auto">Hear from people who have worked with me to advance their careers.</p>
+    <section id="testimonials" class="relative z-10 py-24 lg:py-32 px-4 md:px-8 bg-slate-900/50">
+      <div class="max-w-5xl mx-auto space-y-12 lg:space-y-16">
+        <div class="text-center">
+          <div class="font-mono text-sm text-orange-400 tracking-[0.2em] uppercase mb-4">Success Stories</div>
+          <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+            <i class="ri-chat-quote-line text-orange-400"></i> What Mentees Say
+          </h2>
         </div>
 
-        <div class="grid md:grid-cols-3 gap-6 fade-in">
-          <div class="glass rounded-2xl p-7 card-hover">
+        <div class="grid md:grid-cols-3 gap-6 lg:gap-8">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
             <div class="flex gap-1 mb-4">
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
             </div>
-            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+            <blockquote class="text-indigo-200 text-lg mb-6 leading-relaxed">
               "I needed clarity on which path to choose after graduating. The sessions helped me see my options clearly and I landed a data engineering role within two months."
             </blockquote>
-            <div>
-              <div class="font-semibold text-white text-sm">Maria L.</div>
-              <div class="text-xs text-gray-500">Recent CS Graduate</div>
+            <div class="border-t border-indigo-800 pt-4">
+              <div class="font-semibold text-white">Maria L.</div>
+              <div class="text-indigo-400 text-sm">Recent CS Graduate</div>
             </div>
           </div>
 
-          <div class="glass rounded-2xl p-7 card-hover">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
             <div class="flex gap-1 mb-4">
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
             </div>
-            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+            <blockquote class="text-indigo-200 text-lg mb-6 leading-relaxed">
               "I started my first job but struggled with expectations and technical uncertainty. Having a mentor who understood both academia and industry made all the difference."
             </blockquote>
-            <div>
-              <div class="font-semibold text-white text-sm">Daniel K.</div>
-              <div class="text-xs text-gray-500">Junior Software Engineer</div>
+            <div class="border-t border-indigo-800 pt-4">
+              <div class="font-semibold text-white">Daniel K.</div>
+              <div class="text-indigo-400 text-sm">Junior Software Engineer</div>
             </div>
           </div>
 
-          <div class="glass rounded-2xl p-7 card-hover">
+          <div class="group rounded-lg border border-indigo-800 bg-base p-6 lg:p-8 transition-all hover:border-orange-400">
             <div class="flex gap-1 mb-4">
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-              <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
+              <i class="ri-star-fill text-orange-400"></i>
             </div>
-            <blockquote class="text-gray-300 mb-5 leading-relaxed">
+            <blockquote class="text-indigo-200 text-lg mb-6 leading-relaxed">
               "The CV review and interview prep were incredibly practical. I went from zero callbacks to three offers in different countries. Highly recommend for anyone entering the EU tech market."
             </blockquote>
-            <div>
-              <div class="font-semibold text-white text-sm">Ana R.</div>
-              <div class="text-xs text-gray-500">ML Engineer, formerly in academia</div>
+            <div class="border-t border-indigo-800 pt-4">
+              <div class="font-semibold text-white">Ana R.</div>
+              <div class="text-indigo-400 text-sm">ML Engineer, formerly in academia</div>
             </div>
           </div>
         </div>
@@ -569,20 +430,21 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-24 md:py-32 relative">
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-brand-600/[0.06] to-transparent pointer-events-none"></div>
-      <div class="max-w-3xl mx-auto px-6 text-center relative fade-in">
-        <h2 class="text-3xl md:text-4xl font-extrabold tracking-tight mb-4">Ready to Take the Next Step?</h2>
-        <p class="text-gray-400 text-lg mb-10 max-w-xl mx-auto">
+    <section class="relative z-10 py-24 lg:py-32 px-4 md:px-8 bg-indigo-950">
+      <div class="max-w-5xl mx-auto text-center space-y-8">
+        <h2 class="text-4xl md:text-5xl lg:text-6xl font-bold text-white">
+          <i class="ri-arrow-right-up-line text-orange-400"></i> Ready to Take the Next Step?
+        </h2>
+        <p class="text-xl lg:text-2xl text-indigo-200 max-w-2xl mx-auto text-balance">
           Book a free discovery call. Let's talk about your situation and see if mentorship is the right fit for you.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="btn-primary inline-flex items-center justify-center gap-2 text-white font-semibold px-10 py-4 rounded-xl text-base">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+        <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="https://calendly.com/boris-villazon-terrazas/30min" target="_blank" class="inline-flex items-center justify-center gap-2 bg-orange-500 text-white font-medium rounded-md h-12 px-8 text-lg hover:bg-orange-600 transition-colors w-full sm:w-auto">
+            <i class="ri-calendar-line"></i>
             Book a Free Discovery Call
           </a>
-          <a href="mailto:boris.villazon.terrazas@gmail.com" class="btn-secondary inline-flex items-center justify-center gap-2 border border-white/10 text-white font-semibold px-10 py-4 rounded-xl text-base">
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+          <a href="mailto:boris.villazon.terrazas@gmail.com" class="inline-flex items-center justify-center gap-2 rounded-md border border-indigo-700 text-indigo-100 font-medium h-12 px-8 text-lg hover:bg-orange-400 hover:text-white hover:border-orange-400 transition-all w-full sm:w-auto">
+            <i class="ri-mail-line"></i>
             Send an Email
           </a>
         </div>
@@ -592,83 +454,63 @@
   </main>
 
   <!-- Footer -->
-  <footer class="border-t border-white/5">
-    <div class="max-w-6xl mx-auto px-6 py-12">
-      <div class="grid md:grid-cols-3 gap-10 md:gap-6">
-        <!-- Brand -->
-        <div>
-          <div class="flex items-center gap-3 mb-4">
-            <div class="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-accent-500 flex items-center justify-center font-extrabold text-xs text-white">
-              AI
-            </div>
-            <div class="font-bold text-white">Tech & AI Mentorship</div>
-          </div>
-          <p class="text-sm text-gray-500 max-w-xs">Career guidance and professional growth for computer science graduates and junior professionals.</p>
+  <footer class="w-full border-t border-indigo-800/60 bg-base py-12 text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 md:px-8 flex flex-col gap-12">
+      <div class="flex flex-col md:flex-row justify-between items-center md:items-start gap-8">
+        <div class="flex flex-col items-center md:items-start gap-4">
+          <a href="#" class="font-bold text-lg text-white hover:text-orange-400 transition-colors">Tech & AI Mentorship</a>
+          <p class="text-sm text-slate-500 max-w-xs text-center md:text-left">Career guidance and professional growth for computer science graduates and junior professionals.</p>
         </div>
 
-        <!-- Quick Links -->
-        <div>
-          <h4 class="font-semibold text-white text-sm mb-4">Quick Links</h4>
-          <nav class="flex flex-col gap-2.5">
-            <a href="#services" class="text-sm text-gray-500 hover:text-white transition-colors">Services</a>
-            <a href="#how-it-works" class="text-sm text-gray-500 hover:text-white transition-colors">How It Works</a>
-            <a href="#pricing" class="text-sm text-gray-500 hover:text-white transition-colors">Pricing</a>
-            <a href="#testimonials" class="text-sm text-gray-500 hover:text-white transition-colors">Testimonials</a>
-          </nav>
+        <div class="flex flex-col md:flex-row gap-8 items-center md:items-start">
+          <div class="flex flex-col md:flex-row gap-6 text-sm font-medium">
+            <a href="#services" class="hover:text-orange-400 transition-colors">Services</a>
+            <a href="#how-it-works" class="hover:text-orange-400 transition-colors">How It Works</a>
+            <a href="#pricing" class="hover:text-orange-400 transition-colors">Pricing</a>
+            <a href="#testimonials" class="hover:text-orange-400 transition-colors">Testimonials</a>
+          </div>
         </div>
 
-        <!-- Connect -->
-        <div>
-          <h4 class="font-semibold text-white text-sm mb-4">Connect</h4>
-          <div class="flex flex-col gap-3">
-            <a href="mailto:boris.villazon.terrazas@gmail.com" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
-              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-              boris.villazon.terrazas@gmail.com
-            </a>
-            <a href="https://www.linkedin.com/in/boris-villazon-terrazas-phd/" target="_blank" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-              LinkedIn
-            </a>
-            <a href="https://github.com/boricles" target="_blank" class="inline-flex items-center gap-2.5 text-sm text-gray-500 hover:text-white transition-colors">
-              <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-              GitHub
-            </a>
-          </div>
+        <div class="flex flex-row items-center gap-4">
+          <a href="mailto:boris.villazon.terrazas@gmail.com" class="text-2xl hover:text-orange-400 transition-colors" aria-label="Email">
+            <i class="ri-mail-line"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/boris-villazon-terrazas-phd/" target="_blank" class="text-2xl hover:text-orange-400 transition-colors" aria-label="LinkedIn">
+            <i class="ri-linkedin-box-line"></i>
+          </a>
+          <a href="https://github.com/boricles" target="_blank" class="text-2xl hover:text-orange-400 transition-colors" aria-label="GitHub">
+            <i class="ri-github-line"></i>
+          </a>
         </div>
       </div>
 
-      <div class="border-t border-white/5 mt-10 pt-8 text-center">
-        <p class="text-sm text-gray-600">&copy; <span id="year"></span> Tech & AI Mentorship. All rights reserved.</p>
+      <div class="flex flex-col items-center gap-4 text-center border-t border-indigo-900/50 pt-8">
+        <p class="text-sm text-slate-500">&copy; <span id="year"></span> Tech & AI Mentorship. All rights reserved.</p>
       </div>
     </div>
   </footer>
 
   <script>
-    // Dynamic year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Mobile menu toggle
     const toggle = document.getElementById('mobile-toggle');
     const menu = document.getElementById('mobile-menu');
+    const iconOpen = document.getElementById('menu-icon-open');
+    const iconClose = document.getElementById('menu-icon-close');
+
     toggle.addEventListener('click', () => {
-      menu.classList.toggle('hidden');
+      const isHidden = menu.classList.toggle('hidden');
+      iconOpen.classList.toggle('hidden', !isHidden);
+      iconClose.classList.toggle('hidden', isHidden);
     });
 
-    // Close mobile menu on link click
     menu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => menu.classList.add('hidden'));
-    });
-
-    // Scroll-triggered fade-in animations
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+      link.addEventListener('click', () => {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
       });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    });
   </script>
 </body>
 </html>
